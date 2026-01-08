@@ -1,18 +1,21 @@
 {
-  "name": "full-stack-app",
-  "version": "1.0.0",
-  "description": "A full-stack web application with Node.js backend and frontend",
+  "name": "pro-company-website",
+  "version": "2.0.0",
+  "description": "A professional company website with advanced features",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
-  "keywords": [],
+  "keywords": ["company", "website", "professional"],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "uuid": "^9.0.0",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

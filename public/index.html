@@ -3,78 +3,279 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full-Stack Web App</title>
+  <meta name="description" content="Leading digital solutions company providing web development, mobile apps, and AI services">
+  <meta name="keywords" content="web development, mobile apps, cloud solutions, AI, consulting">
+  <meta property="og:title" content="TechVision - Digital Solutions">
+  <meta property="og:description" content="Transform your business with our innovative digital solutions">
+  <meta property="og:type" content="website">
+  <title>TechVision - Digital Solutions & Innovation</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Navbar -->
   <header>
     <nav class="navbar">
-      <div class="container">
-        <div class="logo">Full-Stack App</div>
+      <div class="container navbar-container">
+        <div class="logo">🚀 TechVision</div>
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search...">
+          <button onclick="performSearch()" class="search-btn">🔍</button>
+        </div>
         <ul class="nav-links">
-          <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-          <li><a href="#calculator" onclick="scrollToSection('calculator')">Calculator</a></li>
-          <li><a href="#data" onclick="scrollToSection('data')">Data</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="theme-toggle" onclick="toggleTheme()">🌙</button></li>
         </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <!-- Home Section -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="container">
-        <h1>Welcome to Full-Stack Web App</h1>
-        <p>A modern web application built with Node.js, Express, and vanilla JavaScript</p>
-        <button class="btn btn-primary" onclick="getGreeting()">Get Greeting from Backend</button>
-        <div id="greeting-result" class="result"></div>
-      </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section id="calculator" class="section">
-      <div class="container">
-        <h2>Calculator</h2>
-        <div class="calculator-container">
-          <div class="input-group">
-            <label for="num1">Number 1:</label>
-            <input type="number" id="num1" placeholder="Enter first number">
+      <div class="hero-content">
+        <div class="container">
+          <h1 class="hero-title">Transform Your Business with Digital Innovation</h1>
+          <p class="hero-subtitle">We deliver cutting-edge solutions that drive growth and transformation</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="scrollToSection('services')">Explore Services</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('contact')">Get Started</button>
           </div>
-          
-          <div class="input-group">
-            <label for="num2">Number 2:</label>
-            <input type="number" id="num2" placeholder="Enter second number">
+          <div class="stats-container">
+            <div class="stat" id="stat-projects">
+              <h3>150+</h3>
+              <p>Projects Completed</p>
+            </div>
+            <div class="stat">
+              <h3>50+</h3>
+              <p>Happy Clients</p>
+            </div>
+            <div class="stat">
+              <h3>98%</h3>
+              <p>Satisfaction Rate</p>
+            </div>
           </div>
-          
-          <div class="input-group">
-            <label for="operation">Operation:</label>
-            <select id="operation">
-              <option value="add">Add</option>
-              <option value="subtract">Subtract</option>
-              <option value="multiply">Multiply</option>
-              <option value="divide">Divide</option>
-            </select>
-          </div>
-          
-          <button class="btn btn-primary" onclick="calculate()">Calculate</button>
-          <div id="calc-result" class="result"></div>
         </div>
       </div>
     </section>
 
-    <!-- Data Section -->
-    <section id="data" class="section">
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
       <div class="container">
-        <h2>Users Data</h2>
-        <button class="btn btn-secondary" onclick="loadData()">Load Users</button>
-        <div id="data-container" class="data-grid"></div>
+        <div class="section-header">
+          <h2>Our Services</h2>
+          <p>Comprehensive digital solutions tailored to your needs</p>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Portfolio</h2>
+          <p>Showcase of successful projects and case studies</p>
+        </div>
+        <div class="portfolio-grid" id="portfolio-grid"></div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Meet Our Team</h2>
+          <p>Talented professionals dedicated to your success</p>
+        </div>
+        <div class="team-grid" id="team-grid"></div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Client Testimonials</h2>
+          <p>What our clients say about us</p>
+        </div>
+        <div class="testimonials-carousel" id="testimonials-carousel"></div>
+        <div class="testimonial-form">
+          <h3>Share Your Experience</h3>
+          <form onsubmit="submitTestimonial(event)">
+            <input type="text" id="testi-name" placeholder="Your Name" required>
+            <input type="text" id="testi-company" placeholder="Company (optional)">
+            <textarea id="testi-message" placeholder="Your message..." required></textarea>
+            <select id="testi-rating">
+              <option value="5">⭐ Excellent (5 stars)</option>
+              <option value="4">⭐ Very Good (4 stars)</option>
+              <option value="3">⭐ Good (3 stars)</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section blog-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Latest News & Articles</h2>
+          <p>Stay updated with industry insights and tips</p>
+        </div>
+        <div class="blog-grid" id="blog-grid"></div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="container">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest updates and exclusive offers delivered to your inbox</p>
+        <form onsubmit="subscribeNewsletter(event)" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" id="newsletter-email" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <div id="newsletter-response"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get In Touch</h2>
+          <p>Have a project in mind? Let's talk about it</p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="info-item">
+              <h3>📍 Address</h3>
+              <p>123 Tech Street, Silicon Valley, CA 94025</p>
+            </div>
+            <div class="info-item">
+              <h3>📞 Phone</h3>
+              <p>+1 (555) 123-4567</p>
+            </div>
+            <div class="info-item">
+              <h3>✉️ Email</h3>
+              <p>info@techvision.com</p>
+            </div>
+            <div class="info-item">
+              <h3>🕐 Business Hours</h3>
+              <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+            </div>
+          </div>
+          <form onsubmit="submitContact(event)" class="contact-form">
+            <input type="text" id="contact-name" placeholder="Your Name" required>
+            <input type="email" id="contact-email" placeholder="Your Email" required>
+            <input type="tel" id="contact-phone" placeholder="Phone (optional)">
+            <input type="text" id="contact-subject" placeholder="Subject" required>
+            <textarea id="contact-message" placeholder="Your Message..." rows="5" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+        <div id="contact-response"></div>
+      </div>
+    </section>
+
+    <!-- Search Results Modal -->
+    <div id="search-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSearch()">&times;</span>
+        <h2>Search Results</h2>
+        <div id="search-results"></div>
+      </div>
+    </div>
+
+    <!-- Admin Dashboard (Hidden) -->
+    <section id="admin-dashboard" class="admin-panel">
+      <div class="admin-header">
+        <h2>Admin Dashboard</h2>
+        <button onclick="closeAdmin()" class="close-btn">✕</button>
+      </div>
+      <div class="admin-content">
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <h3>Total Contacts</h3>
+            <p id="admin-contacts">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Newsletter Subscribers</h3>
+            <p id="admin-subscribers">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Projects</h3>
+            <p id="admin-projects">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Testimonials</h3>
+            <p id="admin-testimonials">0</p>
+          </div>
+        </div>
+        <div class="recent-contacts">
+          <h3>Recent Contact Submissions</h3>
+          <div id="admin-recent-contacts"></div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 Full-Stack Web App. Built with Node.js and Docker.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>TechVision</h3>
+          <p>Transforming businesses through innovative digital solutions.</p>
+          <div class="social-links">
+            <a href="#">🐦 Twitter</a>
+            <a href="#">💼 LinkedIn</a>
+            <a href="#">📘 Facebook</a>
+            <a href="#">📷 Instagram</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Mobile Apps</a></li>
+            <li><a href="#">Cloud Solutions</a></li>
+            <li><a href="#">AI & ML</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TechVision. All rights reserved. | Built with ❤️ using Node.js & Docker</p>
+      </div>
     </div>
   </footer>
 

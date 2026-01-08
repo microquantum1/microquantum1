@@ -2,52 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nexora Systems</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Stack Web App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">Full-Stack App</div>
+        <ul class="nav-links">
+          <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
+          <li><a href="#calculator" onclick="scrollToSection('calculator')">Calculator</a></li>
+          <li><a href="#data" onclick="scrollToSection('data')">Data</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-<header>
-  <h1>NEXORA SYSTEMS</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <h1>Welcome to Full-Stack Web App</h1>
+        <p>A modern web application built with Node.js, Express, and vanilla JavaScript</p>
+        <button class="btn btn-primary" onclick="getGreeting()">Get Greeting from Backend</button>
+        <div id="greeting-result" class="result"></div>
+      </div>
+    </section>
 
-<section class="hero">
-  <h2>Engineering the Future</h2>
-  <p>Advanced technology solutions for modern enterprises.</p>
-</section>
+    <!-- Calculator Section -->
+    <section id="calculator" class="section">
+      <div class="container">
+        <h2>Calculator</h2>
+        <div class="calculator-container">
+          <div class="input-group">
+            <label for="num1">Number 1:</label>
+            <input type="number" id="num1" placeholder="Enter first number">
+          </div>
+          
+          <div class="input-group">
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2" placeholder="Enter second number">
+          </div>
+          
+          <div class="input-group">
+            <label for="operation">Operation:</label>
+            <select id="operation">
+              <option value="add">Add</option>
+              <option value="subtract">Subtract</option>
+              <option value="multiply">Multiply</option>
+              <option value="divide">Divide</option>
+            </select>
+          </div>
+          
+          <button class="btn btn-primary" onclick="calculate()">Calculate</button>
+          <div id="calc-result" class="result"></div>
+        </div>
+      </div>
+    </section>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p>
-    Nexora Systems is a forward-thinking technology company specializing in
-    intelligent, secure, and scalable digital solutions.
-  </p>
-</section>
+    <!-- Data Section -->
+    <section id="data" class="section">
+      <div class="container">
+        <h2>Users Data</h2>
+        <button class="btn btn-secondary" onclick="loadData()">Load Users</button>
+        <div id="data-container" class="data-grid"></div>
+      </div>
+    </section>
+  </main>
 
-<section id="services">
-  <h2>Our Services</h2>
-  <div id="service-list"></div>
-</section>
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Full-Stack Web App. Built with Node.js and Docker.</p>
+    </div>
+  </footer>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <form id="contactForm">
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
-
-<footer>
-  © 2026 Nexora Systems. All rights reserved.
-</footer>
-
-<script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
